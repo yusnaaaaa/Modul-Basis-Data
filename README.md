@@ -1,4 +1,4 @@
-# Modul-Basis-Data
+# Modul Basis Data
 Modul ini disusun untuk memenuhi kebutuhan belajar bersama yang akan membahas mengenai Basis Data
 
 # Daftar Modul dan Materi
@@ -13,6 +13,14 @@ Modul ini disusun untuk memenuhi kebutuhan belajar bersama yang akan membahas me
 - [BAB 9 Nested Query](#bab-9-nested-query)
 
 ## BAB 1 Pengenalan Basis Data
+Data adalah fakta dari suatu objek atau kejadian.  
+Data biasanya dinyatakan dalam bentuk simbol seperti teks, angka, gambar, suara, atau video.
+Berikut merupakan contoh data :
+```
+Nama mahasiswa: Andi Prasetya
+Tanggal lahir: 27 Juni 2002
+Nilai Basis Data: A
+```
 ## BAB 2 Konsep Basis Data
 ## BAB 3 Perancangan Konseptual dan Pemodelan Data
 ## BAB 4 Physical Data Model
