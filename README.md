@@ -76,10 +76,48 @@ Fungsi DBMS antara lain :
 - Memanipulasi database : querying, insertion, deletions dan modifications
 - Pemrosesan dan sharing sekaligus dengan satu kelompok pengguna dan program
 
-Terdapat dua jenis DBMS, yaitu Relational Database Management System (RDMS) dan Non-relational Database Management System. Berikut merupakan beberapa contoh DBMS : 
+Terdapat dua jenis DBMS, yaitu Relational Database Management System (RDMS) dan Non-relational Database Management System. Berikut merupakan beberapa contoh DBMS :   
 ![image](https://github.com/user-attachments/assets/cfc0620b-54fc-4d22-9e27-a3d0d32e8ddc)
 
 ## BAB 2 Konsep Basis Data
+*Entitas* adalah objek atau kejadian yang ada pada dunia nyata yang membedakan objek tersebut dengan objek lainnya. Sebuah entitas did dalam basis data dideskripsikan menggunakan sekumpulan atribut. Salah satu contoh entitas adalah `karyawan`.  
+*Atribut* adalah item data yang menjadi karakteristik dari suatu entitas. Salah satu contoh dari atribut dari entitas `karyawan` antara lain adalah `NIP, Nama, Alamat, No HP, dll`.  
+Entitas dapat berupa :  
+![image](https://github.com/user-attachments/assets/21c8ecb3-4936-4a95-a9dc-07293c19bbc4)  
+
+Cara menemukan entitas :  
+1. Buat ilustrasi/gambaran cerita tentang sistem yang akan dicari entitasnya
+2. Tandai setiap objek yang diwakili oleh kata benda yang ada di dalam ilustrasi tersebut
+3. Untuk setiap objek tersebut yakinkan bahwa ia memiliki karakteristik yang nanti disebut sebagai atribut
+4. Tentukan objek yang merupakan entitas (Jika memang ia memiliki karakteristik jadikan ia sebagai entitas)
+
+*Relationship* merupakan hubungan antara dua buah entitas atau lebih. Berikut merupakan contoh dari relationship :  
+![image](https://github.com/user-attachments/assets/d761eafc-9da0-4c03-a429-c43114c7345e)
+
+Tipe Hubungan antar Entitas ada dua macam :  
+1. Entitas Kuat (Strong Entity) merupakan entitas yang berdiri sendiri tanpa bergantung pada entitas lain. Selain itu, bisa diidentifikasi secara unik menggunakan atribut-atributnya sendiri, salah satu / beberapa atribut miliknya menjadi `PRIMARY KEY`.
+2. Entitas Lemah (Weak Entity) merupakan entitas yang tidak bisa diidentifikasi secara unik melalui atributnya saja, sehingga bergantung pada entitas lain. Weak entity biasanya menggunakan atribut dari entitas lain (foreign key).
+
+Contoh case :  
+![image](https://github.com/user-attachments/assets/b7d98dce-7051-4462-9b1c-08a5a122ece2)  
+
+Relasi dari sebuah entitas dapat dikelompokkan menjadi empat jenis :  
+![image](https://github.com/user-attachments/assets/bd44b75d-a307-4d22-804c-bad2a523637d)  
+
+![image](https://github.com/user-attachments/assets/f6ecfee2-f76d-46bf-84d0-f189aebe68ce)
+
+![image](https://github.com/user-attachments/assets/1a0014d0-bc6b-4b20-9c24-538fe20577ec)
+
+![image](https://github.com/user-attachments/assets/c46f891a-8ea6-47d2-afa3-622c4a06074e)
+
+![image](https://github.com/user-attachments/assets/9ff3f78c-9553-4b75-8e9b-3a4f34e12a75)
+
+Adapun cara menentukan relasi antara lain :  
+1. Dari gambaran cerita sistem, tandai setiap hubungan yang diwakili oleh kata kerja yang ada di dalam ilustrasi tersebut beserta entitas yang berhubungan
+2. Identifikasikan rasio kardinalitas dari setiap hubungan
+3. Identifikasikan batasan partisipasi dari setiap hubungan yang ada berikut kemungkinan atribut yang muncul dari setiap hubungan
+4. Gambarkan hubungan tersebut dalam bentuk notasi diagram dan gabungkan dengan notasi Entitas dan atribut yang dibuat sebelumnya
+
 ## BAB 3 Perancangan Konseptual dan Pemodelan Data
 ## BAB 4 Physical Data Model
 ## BAB 5 Normalisasi
