@@ -227,6 +227,52 @@ Relasi Many-to-Many :
 CDM ke PDM : Secara teknis PDM adalah proses menambahkan constraint FOREIGN KEY ke tabel rujukan.
 
 ## BAB 5 Normalisasi
+Normalisasi adalah proses pembentukan struktur basis data sehingga sebagian besar ambiguity bisa dihilangkan. Normalisasi biasanya digunakan untuk memastikan bahwa basis data yang dibuat berkualitas baik. Tahap Normalisasi dimulai dari tahap paling ringan (1NF) hingga paling ketat (5NF). Biasanya hanya sampai pada tingkat 3NF atau BCNF karena sudah cukup memadai untuk menghasilkan tabel-tabel yang berkualitas baik.  
+
+Sebuah tabel dikatakan baik (efisien) atau normal jika memenuhi 3 kriteria sbb:  
+![image](https://github.com/user-attachments/assets/8ae3951c-c8d4-47af-bfab-da9c2d17f4d9)  
+
+Jika kriteria ketiga (BCNF) tidak dapat terpenuhi, maka paling tidak tabel tersebut tidak melanggar Bentuk Normal tahap ketiga (3rd Normal Form / 3NF).
+
+Tabel Universal (Universal / Star Table) : sebuah tabel yang merangkum semua kelompok data yang saling berhubungan, bukan merupakan tabel yang baik. Jenis tabel ini tidak diinginkan pada konsep Basis Data Relasional. Berikut merupakan contoh tabel universal :  
+
+![image](https://github.com/user-attachments/assets/e3b70311-017b-4a27-9888-f948b3eaad5d)  
+
+Functional Dependency :  
+Notasi : A ⭢ B
+A dan B adalah atribut dari sebuah tabel. Berarti secara fungsional A menentukan B atau B tergantung pada A, jika dan hanya jika ada 2 baris data dengan nilai A yang sama, maka nilai B juga sama.  
+![image](https://github.com/user-attachments/assets/1dd63a29-5793-4dba-b50c-7622434223d2)  
+
+Berikut merupakan contoh Functional Dependency :  
+![image](https://github.com/user-attachments/assets/85340c05-7f8a-492e-8d1a-ed159092c910)  
+Functional Dependency dari tabel nilai :  
+NRP ⭢ namaMhs : karena untuk setiap nilai yang sama, maka nilai namaMhs juga sama.  
+{Namakul, nrp} ⭢ NiHuruf : Karena attribut Nihuruf tergantung pada Namakul dan nrp secara bersama-sama. Dalam arti lain untuk Namakul dan nrp yang sama, maka NiHuruf juga sama, karena Namakul dan nrp merupakan key (bersifat unik).  
+![image](https://github.com/user-attachments/assets/90ce62d1-90f1-4938-8b47-6bde03695cfb)  
+
+Berikut merupakan bentuk-bentuk normal :  
+![image](https://github.com/user-attachments/assets/ce51672e-c408-4d0e-9a9a-33ec033d7933)  
+
+Bentuk Normal Tahap Pertama (1st Normal Form / 1NF) : Bentuk normal 1NF terpenuhi jika sebuah tabel tidak memiliki atribut bernilai banyak (multivalued attribute), atribut composite atau kombinasinya dalam domain data yang sama. Setiap atribut dalam tabel tersebut harus bernilai atomic (tidak dapat dibagi-bagi lagi).  
+![image](https://github.com/user-attachments/assets/abbbfb79-2f1b-429d-a468-8df1bdfea816)  
+![image](https://github.com/user-attachments/assets/aa3ad704-2eb1-41f8-8912-d6d7ed51f3c5)  
+![image](https://github.com/user-attachments/assets/1cff368e-a2d8-4fa1-b002-73cb111c7f15)  
+
+Bentuk Normal Tahap Kedua (2nd Normal Form) : Bentuk normal 2NF terpenuhi dalam sebuah tabel jika telah memenuhi bentuk 1NF, dan semua atribut selain primary key, secara utuh memiliki Functional Dependency pada primary key. Sebuah tabel tidak memenuhi 2NF, jika ada atribut yang ketergantungannya (Functional Dependency) hanya bersifat parsial saja (hanya tergantung pada sebagian dari primary key). Jika terdapat atribut yang tidak memiliki ketergantungan terhadap primary key, maka atribut tersebut harus dipindah atau dihilangkan.  
+![image](https://github.com/user-attachments/assets/7a21e14b-00f2-461e-aeae-b9102f8a19b6)  
+![image](https://github.com/user-attachments/assets/5c290ad3-842b-4b52-a684-77c66131475d)  
+
+Bentuk Normal Tahap Ketiga (3rd Normal Form /3NF) : Bentuk normal 3NF terpenuhi, jika telah memenuhi bentuk 2NF, dan jika tidak ada atribut yang bukan kunci memiliki ketergantungan transitif (tidak secara langsung) pada primary key.  
+![image](https://github.com/user-attachments/assets/47c1a2c4-d7fb-43c8-81d7-348191d81c15)  
+
+![image](https://github.com/user-attachments/assets/70966820-474a-4d7d-9184-d0f2f5e05a44)  
+
+Boyce-Code Normal Form (BCNF) : Bentuk BCNF terpenuhi dalam sebuah tabel, jika untuk setiap functional dependency terhadap setiap atribut atau gabungan atribut dalam bentuk: X ⭢ Y maka X adalah super key. Tabel tersebut harus di-dekomposisi berdasarkan functional dependency yang ada, sehingga X menjadi super key dari tabel-tabel hasil dekomposisi. Setiap tabel dalam BCNF merupakan 3NF. Akan tetapi setiap 3NF belum tentu termasuk BCNF . BCNF merupakan perbaikan bagi 3NF yang anomali.  
+![image](https://github.com/user-attachments/assets/eb011f51-7f1e-4d41-8a40-db2e30190f32)  
+![image](https://github.com/user-attachments/assets/7029b060-d8be-4c01-9e56-94b236ffe0a0)  
+![image](https://github.com/user-attachments/assets/2ffa5cd2-6b39-40ad-82f1-688a2a1026ed)  
+![image](https://github.com/user-attachments/assets/8b78bf83-0668-47cf-bf1d-f7cb96d111d2)
+
 ## BAB 6 Data Definition Language
 ## BAB 7 Data Manipulation Language
 ## BAB 8 Aljabar Relasional dan Join
