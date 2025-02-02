@@ -189,6 +189,43 @@ Partisipasi Entitas ada 2 macam, yaitu Partisipasi Total dan Partisipasi Parsial
 ![image](https://github.com/user-attachments/assets/1fef2e61-880b-4412-83d0-0cb14cc52916)  
 
 ## BAB 4 Physical Data Model
+Physical Data Model (PDM) merupakan pemodelan data secara teknis yang dirancang untuk mendukung program komputer dan programmer yang menggunakan basis data. PDM bersifat platform-dependent, yaitu tergantung pada hardware, software, dan tool.
+
+Perbedaan CDM vs PDM :  
+- CDM : Memodelkan informasi bisnis dan aturan bisnis, platform independent.
+- PDM : Memodelkan implementasi teknis, platform dependent.
+
+Fokus perubahan CDM menjadi PDM :  
+![image](https://github.com/user-attachments/assets/c433cff5-d00c-4ba0-aa73-f44f2eca7752)  
+
+Entitas Lemah : PRIMARY KEY Entitas Kuat sebagai PRIMARY KEY dan FOREIGN KEY Entitas Lemah  
+![image](https://github.com/user-attachments/assets/0fe8273c-e416-4eca-88fc-a5b59271949c)
+
+Relasi One-to-one :  
+- Periksa partisipasi dari dua entitas: partisipasi total atau parsial.
+Suatu entitas dianggap lebih “berat” timbangannya apabila mempunyai partisipasi total, Suatu entitas dianggap lebih “ringan” timbangannya apabila mempunyai partisipasi parsial.
+- Jika partisipasi dua entitas berbeda:
+Tambahkan primary key dari sisi yang lebih “ringan” ke sisi (entitas) yang lebih “berat”.
+- Jika partisipasi dua entitas sama
+dua entitas tersebut boleh digabung menjadi satu tabel
+
+![image](https://github.com/user-attachments/assets/4bd62570-df75-49ee-a10e-00b26d538f5d)  
+
+Relasi One-to-Many :  
+- Tambahkan PRIMARY KEY dari Entitas yang memiliki maksimum relasi (Cardinality) one ke Entitas yang memiliki maksimum relasi (Cardinality) many 
+- Jadikan (1) sebagai FOREIGN KEY
+
+![image](https://github.com/user-attachments/assets/8a0d0c6f-616e-431b-9101-a65006df5116)  
+
+Relasi Many-to-Many :  
+- Untuk setiap relasi binary M:N, buatlah tabel baru R dengan atribut seluruh simple atribut yang terdapat pada relasi biner tersebut. 
+- Tambahkan primary key yang terdapat pada kedua sisi ke tabel R. 
+- Kedua foreign key yang didapat dari kedua sisi tersebut digabung menjadi satu membentuk primary key dari tabel R
+
+![image](https://github.com/user-attachments/assets/ad035465-2ad1-4f6f-b828-728ab1f642f1)
+
+CDM ke PDM : Secara teknis PDM adalah proses menambahkan constraint FOREIGN KEY ke tabel rujukan.
+
 ## BAB 5 Normalisasi
 ## BAB 6 Data Definition Language
 ## BAB 7 Data Manipulation Language
