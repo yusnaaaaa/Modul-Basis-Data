@@ -169,13 +169,13 @@ Derajat relasi adalah jumlah entitas yang saling berhubungan dalam sebuah relasi
 - Unary -> 1 entitas  
 ![image](https://github.com/user-attachments/assets/1036dc92-4cd8-4d0c-a8ea-ab349114e427)
 
-- Binary -> 2 entitas
+- Binary -> 2 entitas  
 ![image](https://github.com/user-attachments/assets/a86f0686-edc7-4f8e-8d1e-1f01211f25a9)
 
-- Ternary -> lebih dari 2 entitas
+- Ternary -> lebih dari 2 entitas  
 ![image](https://github.com/user-attachments/assets/dd99c4af-d70d-4102-9b30-b399484275b2)
 
-Kardinalitas One-to-one  
+Kardinalitas One-to-one    
 ![image](https://github.com/user-attachments/assets/7d2e32f8-d6c6-4381-a2b4-b51acdaf8268)  
 
 Kardinalitas One-to-many  
