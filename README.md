@@ -274,6 +274,64 @@ Boyce-Code Normal Form (BCNF) : Bentuk BCNF terpenuhi dalam sebuah tabel, jika u
 ![image](https://github.com/user-attachments/assets/8b78bf83-0668-47cf-bf1d-f7cb96d111d2)
 
 ## BAB 6 Data Definition Language
+SQL adalah singkatan dari Structured Query Language, dalam bahasa inggris dibaca SEQUEL. SQL merupakan bahasa query standar yang digunakan untuk mengakses basis data relasional.  
+Query adalah perintah atau instruksi yang digunakan untuk mengambil, memasukkan, memperbarui, atau menghapus data dalam basis data. Dalam konteks SQL, query digunakan untuk berinteraksi dengan database relasional, seperti mengambil data dari tabel dengan perintah `SELECT`, menambahkan data dengan `INSERT`, memperbarui data dengan `UPDATE`, atau menghapus data dengan `DELETE`.  
+Syntax dalam pemrograman, termasuk SQL, adalah aturan atau tata cara penulisan kode yang harus diikuti agar komputer bisa memahami dan menjalankan perintah dengan benar. Dalam SQL, sintaks menentukan bagaimana perintah harus ditulis agar bisa dieksekusi oleh database. Jika sintaks salah, maka database akan mengembalikan error.
+
+Penggunaan SQL :  
+1. SQL sebagai bahasa administrasi basis data : SQL dipakai oleh Database Administrator untuk menciptakan serta mengendalikan pengaksesan basis data.
+2. SQL sebagai bahasa query interaktif : Pengguna dapat memberikan perintah-perintah untuk mengakses data sesuai kebutuhan terutama yang diperlukan saat itu.
+3. SQL sebagai bahasa pemrograman basis data : Pemrograman dapat menggunakan perintah-perintah SQL dalam aplikasi yang dibuat, guna mengakses basis data.
+4. SQL sebagai bahasa klien : Klien dapat menjalankan aplikasi yang mengakses basis data yang ada di server.
+
+Terdapat 6 Elemen SQL antara lain :  
+- Pernyataan : Perintah SQL yang meminta sesuatu tindakan kepada DBMS; contoh: Alter, commit, create, delete, drop, grant, insert, revoke, rollback, select, update.
+- Nama : Nama digunakan sebagai identitas bagi objek-objek pada DBMS. Contoh objek: tabel, kolom, pengguna, dll.  Contoh nama tabel: Pegawai.
+- Tipe Data : Setiap data memiliki tipe data. Contoh tipe data: Char, integer, numeric, varchar, money, boolean, blob, serial, date, dll.
+- Konstanta : Konstanta menyatakan nilai yang tetap. Contoh: 75, Jl. Teknik Kimia 25 Surabaya, dll.
+- Ekspresi : Ekspresi adalah segala sesuatu yang menghasilkan nilai. Ekspresi digunakan untuk menghitung nilai. Contoh: harga_total = harga * jumlah_barang.
+- Fungsi Bawaan : Fungsi bawaan: sebuah sub program yang menghasilkan suatu nilai jika dipanggil. Contoh: Min, AVG, dll.
+
+Macam-Macam Kelompok Pernyataan SQL :  
+1. Data Definition Language (DDL) : Untuk mendefinisikan objek-objek basis data, tabel, atribut, batasan-batasan terhadap atribut, serta hubungan antar tabel. Contoh : CREATE, ALTER, DROP.
+2. Data Control Language (DCL) : Untuk mengendalikan pengaksesan data. Contoh : GRANT, REVOKE, LOCK TABLE.
+3. Data Manipulation Language (DML) : Untuk memanipulasi data dalam basis data, misalkan untuk pengambilan, pemasukan, pengubahan, dan penghapusan. Contoh : SELECT, INSERT, DELETE, UPDATE.
+
+Data Definition Language (DDL) adalah bahasa dalam DBMS yang digunakan untuk membuat atau mendefinisikan obyek-obyek di dalam database. Secara umum digunakan untuk membuat obyek pada table dan view.  
+
+4 Macam DDL antara lain :  
+1. DDL untuk Database, digunakan untuk membuat sebuah basis data.
+   Syntax : `create database <nama database>`
+   Contoh : `create database akademik`  
+3. DDL untuk Tabel
+   CREATE TABLE : Digunakan untuk membuat tabel beserta atribut-atributnya (kolom). Berikut merupakan syntax CREATE TABLE :
+   ![image](https://github.com/user-attachments/assets/e1058f3d-a285-4519-ba66-fe7fc53b0f0e)
+   ![image](https://github.com/user-attachments/assets/40ab7c6d-ccfa-4201-9d00-b499969b4195)
+
+   ALTER TABLE : Digunakan untuk menambah, menghapus dan mengubah atribut (kolom) pada suatu tabel. Berikut merupakan syntax ALTER TABLE :
+   ![image](https://github.com/user-attachments/assets/e45da320-3284-48de-9d58-60c372d792ec)
+   ![image](https://github.com/user-attachments/assets/536febcc-4ec6-4625-9df4-83882bf21570)  
+   ![image](https://github.com/user-attachments/assets/3b1c9656-0c33-49fd-92e9-7e12947cb3d6)
+   ![image](https://github.com/user-attachments/assets/a4f42e7c-3a82-4cd0-b638-61f3e071f27c)
+
+   DROP TABLE : Digunakan untuk menghapus tabel. Berikut merupakan syntax DROP TABLE :
+   ![image](https://github.com/user-attachments/assets/f1eb26a6-7395-4693-a373-ec4335c62f9e)
+
+5. DDL untuk View
+   ![image](https://github.com/user-attachments/assets/b58a78ce-8139-4043-88aa-71de6ddf1ca6)  
+
+7. DDL untuk Trigger / Stored Procedure : Trigger adalah sebuah obyek dalam database yang berupa prosedur yang merespon setiap kali terdapat proses modifikasi pada tabel. Proses modifikasi berupa Insert, Update, dan Delete. Berikut merupakan syntax DDL untuk Trigger :
+   ![image](https://github.com/user-attachments/assets/0e18b34b-f9fe-424e-b200-dfccafb20d9e)
+
+RENAME, digunakan untuk merubah nama dari suatu object (table,view,sequence atau synonim). Sebagai contoh, jika kita ingin MERUBAH NAMA tabel dept menjadi detail_dept, maka perintah yang harus dilakukan adalah :  
+`RENAME dept TO detail_dept;`  
+
+MEMASUKKAN DATA KE TABEL, jika sebuah tabel sudah selesai di create (terbentuk kolom), maka perlu diisi datanya (barisnya/Recordnya). Dengan menggunakan perintah DML pada SQL yaitu Insert. Berikut merupakan syntaxnya :  
+`INSERT INTO tablename(field1, field2, field3,…) VALUES( val1, val2, val3, …..)`  
+![image](https://github.com/user-attachments/assets/11900e4d-0dd8-47c3-a1ac-0f35a835502e)  
+
+![image](https://github.com/user-attachments/assets/9da96c5d-86ce-43d6-b135-286619cae0fb)  
+
 ## BAB 7 Data Manipulation Language
 ## BAB 8 Aljabar Relasional dan Join
 ## BAB 9 Nested Query
