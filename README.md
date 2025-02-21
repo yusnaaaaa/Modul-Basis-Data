@@ -9,8 +9,6 @@ Modul ini disusun untuk memenuhi kebutuhan belajar bersama yang akan membahas me
 - [BAB 5 Normalisasi](#bab-5-normalisasi)
 - [BAB 6 Data Definition Language](#bab-6-data-definition-language)
 - [BAB 7 Data Manipulation Language](#bab-7-data-manipulation-language)
-- [BAB 8 Aljabar Relasional dan Join](#bab-8-aljabar-relasional-dan-join)
-- [BAB 9 Nested Query](#bab-9-nested-query)
 
 ## BAB 1 Pengenalan Basis Data
 *Data* adalah fakta dari suatu objek atau kejadian.  
@@ -333,5 +331,232 @@ MEMASUKKAN DATA KE TABEL, jika sebuah tabel sudah selesai di create (terbentuk k
 ![image](https://github.com/user-attachments/assets/9da96c5d-86ce-43d6-b135-286619cae0fb)  
 
 ## BAB 7 Data Manipulation Language
-## BAB 8 Aljabar Relasional dan Join
-## BAB 9 Nested Query
+DML (Data Manipulation Language )  bahasa SQL yang digunakan untuk memanipulasi data di dalam suatu tabel. 
+Perintah DML meliputi :  
+1. INSERT -> Menyisipkan/menambah data baru ke dalam tabel di database
+2. UPDATE -> Mengupdate data dalam tabel di database
+3. DELETE -> Menghapus data dari tabel di database
+4. SELECT -> Mengekstrak/menampilkan data dari tabel-tabel di database
+
+Perintah INSERT : digunakan untuk `MENAMBAH` data baru dalam database.  
+```
+INSERT [INTO] nama_tabel
+[kolom_1,...,kolom_2]
+VALUES (value_kolom_1,...,value_kolom_n)
+``` 
+
+Keterangan :  
+- bagian yang berada di dalam kurung siku bersifat optional
+- nama_tabel merupakan nama tabel yang datanya akan dimanipulasi
+- kolom_1,kolom_2, dst merupakan nama kolom dari tabel yang bersangkutan
+- Jika data akan diisikan ke dalam semua kolom (field) suatu tabel maka tidak perlu disebutkan nama kolomnya namun pengisianya harus urut.
+- Jika data hanya akan diisikan ke kolom (field) tertentu maka nama kolomnya harus disebutkan.
+
+![image](https://github.com/user-attachments/assets/ac305fc9-a569-4388-a7b2-d3bba76691b7)  
+![image](https://github.com/user-attachments/assets/8a4b0354-ed06-4349-bbfd-50bcb5cae450)  
+
+Perintah UPDATE : digunakan untuk `MENGUBAH/MEMPERBARUI` data dalam database.  
+```
+UPDATE nama_tabel_SET nama_kolom = value
+[WHERE syarat]
+```
+Keterangan :  
+- Nama_tabel berisi nama tabel di mana data yang akan dirubah berada.
+- Nama_kolom berisi nama kolom dimana kolom dari data berada.
+- Value merupakan nilai data pengganti yang akan dimasukkan
+- Syarat merupakan kondisi data yang akan di rubah.
+
+![image](https://github.com/user-attachments/assets/58c26d3e-25c7-4327-b5ce-d412b990a091)  
+
+Perintah DELETE : digunakan untuk `MENGHAPUS` data.  
+```
+DELETE FROM nama_tabel
+[WHERE syarat]
+```
+
+Keterangan :  
+- Nama_tabel berisi nama tabel di mana data yang akan dihapus berada.
+- Syarat merupakan kondisi data yang akan di rubah.
+
+![image](https://github.com/user-attachments/assets/6a88ad68-5fac-41f6-98d7-4e48e6ecd8ff)  
+
+SQL SELECT
+```
+SELECT [DISTINCT] select_list
+FROM table_source
+[WHERE search_condition]
+[GROUP BY group_by_expression]
+[HAVING search_condition]
+[ORDER BY order_expression [ASC | DESC] ]
+```
+
+Pernyataan SELECT digunakan untuk menyeleksi (memilih) data dari satu atau beberapa tabel. Hasil tabulasi disimpan dalam tabel hasil (disebut sebagai result-set).
+```
+SELECT column_name(s) FROM table_name
+```
+
+```
+SELECT [*] [<kolom1>, <kolom2>, . . ., <kolomN>]
+[<alias.kolom1>, <alias.kolom2>, . . . , <alias.kolomN>]
+FROM <nama_tabel>
+```
+
+![image](https://github.com/user-attachments/assets/f87ee185-b8af-4b64-a74d-5e1c1f593c01)
+
+Klausa WHERE : digunakan untuk menyaring data sehingga hanya menampilkan data sesuai dengan kriteria tertentu.  
+```
+SELECT column
+FROM table
+WHERE <kriteria?
+```
+Apabila <kriteria> lebih dari satu, maka bisa ditambahkan dengan AND atau OR (sesuai dengan kebutuhan).  
+
+![image](https://github.com/user-attachments/assets/ab20eb91-4b19-4b7e-b3a4-a5fb73b340eb)  
+
+Klausa WHERE untuk Filter Data, WHERE untuk filter pencarian data di dalam SQL Server bisa dalam beberapa bentuk ekspresi, yakni :  
+- Operasi Pembandingan
+- Operasi Pendekatan Pola
+- Operasi Pembandingan dengan sekumpulan nilai
+
+Berikut merupakan beberapa operator yang dapat digunakan dalam klausa WHERE anatara lain :  
+![image](https://github.com/user-attachments/assets/4582e8c3-6023-47fc-9cb4-0a91ef14ecdf)
+
+Berikut merupakan beberapa contoh untuk Operasi Perbandingan :  
+1. menampilkan pegawai yang berjenis kelamin laki-laki
+```
+SELECT * FROM Employee WHERE Sex="M"
+```
+3. menampilkan pegawai yang tahun kelahirannya lebih dari 1965
+```
+SELECT * FROM Employee 
+WHERE year(Bdate) > 1965
+```
+5. menampilkan pegawai wanita yang lahir di bulan Juli
+```
+SELECT * FROM Employee WHERE Sex=“F” AND month(Bdate)=6
+```
+7. menampikan koleksi yang belum ditambalkan 
+```
+SELECT * FROM Peminjaman WHERE TglKembali IS NULL 
+```
+
+Operasi LIKE (Pembandingan Pola)
+- Operasi ini, hanya untuk pembandingan nilai bertipe string 
+- Digunakan untuk mengenali string-string yang memiliki pola tertentu. 
+- Di dalam operasi ini, digunakan simbol-simbol berikut:
+   - simbol % (Oracle, mySQL) atau * (ms. Access) artinya mewakili 0 s/d tak terhingga dari sembarang karakter 
+   - simbol _ (Oracle, mySQL) atau ? (ms. Access) artinya mewakili 1 sembarang karakter
+ 
+Contoh Operasi LIKE
+1. Menampilkan pegawai yang alamatnya ada kata "Houston"
+```
+SELECT * FROM Employee
+WHERE Address LIKE "%Houston5"
+```
+2. Menampilkan pegawai yang huruf ketiga namanya adalah "m"
+```
+SELECT SSN, Fname FROM Employee
+WHERE Fname LIKE "%__%"
+```
+Notes : “?” atau “_” mewakili satu karakter, "?" untuk DBMS Microsoft Access, untuk DBMS Oracle, mySQL.
+
+Contoh Operasi Pembandingan Pola
+Menampilkan nama pegawai yang huruf ke-11 adalah "g"
+```
+SELECT * FROM Employee
+WHERE substr(Address, 11, 1)='g'
+```
+
+Operasi IN atau NOT IN
+Ekspresi ini digunakan untuk membandingkan dengan sebuah kumpulan nilai, Kumpulan nilai bisa berupa:  
+- nilai-nilai yang diisikan
+Nilai-nilai yang diisikan, maksudnya kita sendiri yang mengisikan nilai-nilai tersebut di dalam query kita. Contohnya jika ingin menampilkan semua mahasiswa yang NIP dosen walina '131' atau '132' :
+```
+SELECT mhs_nrp, mhs_nama
+FROM Mahasiswa
+WHERE mhs_NIPwali IN ('131', '132');
+```
+- query tunggal (query yang hasilnya hanya terdapat sebuah kolom saja)
+Query tunggal, yakni nilai-nilai yang digunakan sebagai pembanding diambil dari sebuah query tunggal yang hasilnya hanya satu kolom saja. Contoh :
+1. Menampilkan data dosen yang tidak memiliki anak wali
+```
+SELECT dos_NIP, dos_Nama
+FROM Dosen
+WHERE dos_NIP NOT IN (Select distinct mhs_NIPWali From mahasiswa)
+```
+2. Menampilkan koleksi yang sedang dipinjam
+```
+SELECT * FROM koleksi WHERE idKoleksi IN (SELECT idKoleksi FROM Peminjaman WHERE TglKembali is NULL)
+```
+
+Fungsi-Fungsi Agregasi
+Query yang melibatkan fungsi perhitungan terhadap seluruh baris data. Fungsi-fungsi tersebut yakni :  
+- COUNT(*) -> mendapatkan jumlah baris
+- SUM(kolom) -> mendapatkan hasil penjumlahan kolom
+- MAX(kolom) -> mendapatkan nilai tertinggi
+- MIN(kolom) -> mendapatkan nilai terendah
+- AVG(kolom) -> mendapatkan nilai rata-rata
+
+Berikut merupakan contoh implementasi fungsi-fungsi agregasi :  
+1. Tampilkan rata-rata harga buku dengan id_Kategori=1
+```
+SELECT AVG(harga)
+FROM buku
+WHERE id_Kategori=1
+```
+2. Tampilkan jumlah mahasiswa
+```
+SELECT COUNT (*)
+FROM mahasiswa
+```
+
+GROUP BY dan HAVING 
+```
+SELECT [DISTINCT] terget-list
+FROM relation-list
+WHERE qualification
+GROUP BY grouping-list
+[HAVING group-qualification]
+```
+Keterangan :  
+- Klausa GROUP BY digunakan untuk pengelompokan dari fungsi-fungsi agregasi
+- Klausa HAVING digunakan untuk memfilter yang terkait dengan fungsi-fungsi agregasi (count, sum, min, max, avg)
+
+Berikut merupakan contoh implementasi GROUP BY dan HAVING  
+1. Dapatkan rata-rata harga sewa VCD per kategori
+```
+SELECT Kategori VCD, AVG (V.Harga_Sewa)
+FROM VCD
+GROUP BY Kategori_VCD
+```
+Jika untuk filter query biasa kita menggunakan klausa WHERE, maka klausa HAVING digunakan untuk filter fungsi-fungsi agregasi.  
+
+2. Tampilkan dosen yang jumlah anak walinya kurang dari 10
+```
+SELECT dos_nama, COUNT(*) as [jmlAnakWali]
+FROM dosen JOIN mahasiswa ON (dose_nip=mhs_NIPWali)
+GROUP BY dos_nama
+HAVING COUNT(*)<10
+```
+
+Klausa ORDER BY digunakan untuk mengurutkan hasil query.
+- ORDER BY <kolom> ASC (=ascending): pengurutan dari nilai kecil ke besar, dari A ke Z
+- ORDER BY <kolom> DESC (=Descending): pengurutan dari nilai besar ke kecil, dari Z ke A
+Contoh: Tampilkan gaji pegawai urut dari yang terbesar:
+```
+SELECT SSN, FName, Salary
+FROM Employee
+ORDER BY salary DESC
+```
+
+Klausa JOIN <table>, jika mengambil informasi dari lebih dari satu tabel, maka kita perlu menggabungkan antara kedua tabel tersebut dengan klausa JOIN <tabel> pada bagian klausa FROM.
+```
+FROM <table1> JOIN <table2> ON (<joinCondition>)
+```
+Berikut merupakan contoh penggunakan JOIN  
+![image](https://github.com/user-attachments/assets/e6db121a-d14b-4bd9-aaab-a366359c1ccf)  
+
+![image](https://github.com/user-attachments/assets/642a1ae1-76fb-4832-a356-51b9959b12e8)  
+
+Bagaimana jika ada nama kolom yang sama?. Solusinya jika ada nama field yang sama dari tabel-tabel yang disertakan, maka sebelum nama field, berikan nama tabel diikuti sebuah titik (.), Perhatikan contoh dibawah ini :  
+![image](https://github.com/user-attachments/assets/2d78bb93-3857-4fde-941b-be353abdde6b)
